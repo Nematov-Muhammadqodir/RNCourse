@@ -13,7 +13,6 @@ import GoalInput from "./components/GoalInput";
 
 export default function App() {
   const [isModalVisible, setIsModelVisible] = useState(false);
-  const [goal, setGoal] = useState("");
   const [goals, setGoals] = useState([]);
 
   const modalVisibleHandler = () => {
@@ -33,6 +32,7 @@ export default function App() {
         setGoals={setGoals}
         goals={goals}
         isModalVisible={isModalVisible}
+        setIsModelVisible={setIsModelVisible}
       />
       <View style={styles.goalsContainer}>
         <FlatList

@@ -2,13 +2,14 @@ import { StyleSheet, View, TextInput, Button, Modal } from "react-native";
 import { useState } from "react";
 
 const GoalInput = (props) => {
-  const { setGoals, goals, isModalVisible } = props;
+  const { setGoals, goals, isModalVisible, setIsModelVisible } = props;
   const [goal, setGoal] = useState("");
   const handleListOfGoals = () => {
     setGoals((goals) => [
       ...goals,
       { text: goal, id: Math.random().toString() },
     ]);
+    setIsModelVisible(false);
   };
   return (
     <Modal visible={isModalVisible} animationType="slide">
@@ -19,7 +20,14 @@ const GoalInput = (props) => {
           value={goal}
           onChangeText={(text) => setGoal(text)}
         />
-        <Button title="Add Goal" onPress={handleListOfGoals} />
+        <View style={styles.buttonsContainer}>
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={handleListOfGoals} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={() => setIsModelVisible(false)} />
+          </View>
+        </View>
       </View>
     </Modal>
   );
@@ -29,10 +37,11 @@ export default GoalInput;
 
 const styles = StyleSheet.create({
   inputContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flex: 1,
+    justifyContent: "center",
     alignItems: "center",
     marginBottom: 24,
+    marginTop: 24,
     borderBottomWidth: 1,
     borderBottomColor: "#ccc",
     paddingBottom: 16,
@@ -43,5 +52,14 @@ const styles = StyleSheet.create({
     width: "70%",
     marginRight: 8,
     padding: 8,
+  },
+  buttonsContainer: {
+    marginTop: 16,
+    flexDirection: "row-reverse",
+    gap: 8,
+  },
+  button: {
+    marginHorizontal: 8,
+    width: "40%",
   },
 });
