@@ -14,6 +14,7 @@ const GoalInput = (props) => {
   const { setGoals, goals, isModalVisible, setIsModelVisible } = props;
   const [goal, setGoal] = useState("");
   const handleListOfGoals = () => {
+    if (goal === "") return;
     setGoals((goals) => [
       ...goals,
       { text: goal, id: Math.random().toString() },
@@ -69,7 +70,11 @@ const styles = StyleSheet.create({
     width: "70%",
     marginRight: 8,
     padding: 8,
+    backgroundColor: "rgb(35, 46, 199)",
+    borderRadius: 6,
     color: "white",
+    fontWeight: "bold",
+    letterSpacing: 1,
   },
   buttonsContainer: {
     marginTop: 16,

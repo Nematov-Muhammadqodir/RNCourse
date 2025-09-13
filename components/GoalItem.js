@@ -19,12 +19,17 @@ export default GoalItem;
 
 const styles = StyleSheet.create({
   listItem: {
-    borderWidth: 1,
-    borderRadius: 8,
+    borderBottomWidth: 2,
+    // borderRadius: 6,
     marginBottom: 2,
-    borderColor: "green",
+    borderColor: "white",
+    // marginVertical: 8,
+    // backgroundColor: "white",
   },
   goalText: {
     padding: 8,
+    fontWeight: "bold",
+    fontSize: 16,
+    color: "white",
   },
 });
